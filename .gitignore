@@ -1,76 +1,134 @@
-# Python
+#############################
+# OS-Specific
+#############################
 
-**pycache**/
+.DS_Store
+Thumbs.db
+
+
+#############################
+# Python Bytecode / Cache
+#############################
+
+__pycache__/
 *.pyc
 *.pyo
+*.pyd
+*.pyd
+*.pyd
+*.py[cod]
 
-# Environments
+
+#############################
+# Virtual Environments
+#############################
 
 .venv/
-env/
 venv/
+env/
+ENV/
+.ipynb_checkpoints/
 
-# IDE
+
+#############################
+# IDE / Editor Config
+#############################
 
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
 
+
+#############################
 # Streamlit
+#############################
 
 .streamlit/
+.streamlit/credentials.toml
+.streamlit/secrets.toml
 
-# Data
 
-data/uploaded/*
-data/processed/*
-data/cache/*
+#############################
+# Data Files
+#############################
 
-# OS
+data/
+data/uploaded/
+data/processed/
+data/cache/
+data/tmp/
+data/**/*.csv
+data/**/*.xlsx
+data/**/*.xls
+data/**/*.json
+data/**/*.parquet
 
-.DS_Store
 
-# Models
+#############################
+# ML Models / Artifacts
+#############################
 
-models/*
+models/
 !models/README.md
+checkpoints/
+artifacts/
+experiments/
+tensorboard/
+runs/
 
-# Project Vision PDF
+
+#############################
+# Project Documentation (local-only)
+#############################
 
 Project_Vision.pdf
 AutoDS_Master_Context.pdf
 
-# OS
 
-.DS_Store
+#############################
+# Build / Distribution
+#############################
 
-# Dependencies
+dist/
+build/
+*.egg-info/
+*.egg
+MANIFEST
 
-node_modules/
 
-# Build outputs
-
-/dist/
-/build/
-
-# Environment variables
+#############################
+# Environment Variables
+#############################
 
 .env
 .env.*
+*.env
 
+
+#############################
 # Logs
+#############################
 
+*.log
+logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Python
 
-**pycache**/
-*.py[cod]
-*.pyo
+#############################
+# Node / JS (if ever used)
+#############################
 
-# Virtual environments
+node_modules/
 
-venv/
-.venv/
+
+#############################
+# Other
+#############################
+
+*.bak
+*.tmp
+*.old
