@@ -159,26 +159,29 @@ cd AutoDS
 ```
 
 # Create virtual environment (Python 3.11 recommended)
-```
+```bash
 python3.11 -m venv .venv
 ```
 # Activate environment
-```
+```bash
 source .venv/bin/activate # for mac
 .venv\Scripts\activate # for windows
 ```
 
 # Install Required System Packages (macOS only)
-```brew install libomp
+```bash
+brew install libomp
 brew link libomp --force
 ```
 
 # Upgrade pip and install dependencies
-```pip install --upgrade pip
+```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 # Run AutoDS
-```streamlit run app.py
+```bash
+streamlit run app.py
 ```
 
 ---
@@ -217,18 +220,23 @@ Pull requests must pass CI and receive approval before merging
 
 1. Create a new branch:
 
+```bash
 git checkout -b feature/<feature-name>
+```
 
 
 3. Commit your changes:
 
+```bash
 git add .
 git commit -m "Describe your update"
-
+```
 
 4. Push the branch:
 
+```bash
 git push -u origin feature/<feature-name>
+```
 
 
 5. Open a Pull Request
