@@ -28,7 +28,7 @@ altair==5.3.0
 # -----------------------
 # STREAMLIT + UI COMPONENTS
 # -----------------------
-streamlit==1.32.0
+streamlit==1.41.1
 streamlit-option-menu==0.3.6
 streamlit-aggrid==0.3.4.post3
 streamlit-chat==0.1.1
