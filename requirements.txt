@@ -36,7 +36,7 @@ streamlit-chat==0.1.1
 # -----------------------
 # EDA AUTOMATION
 # -----------------------
-sweetviz==2.3.1   # keep only this (lightweight, stable)
+sweetviz==2.3.1
 
 # -----------------------
 # FEATURE ENGINEERING
@@ -49,13 +49,13 @@ feature-engine==1.6.2
 # MACHINE LEARNING
 # -----------------------
 xgboost==2.0.3
-lightgbm==4.3.0
+lightgbm==4.3.0          # requires libomp installed via Homebrew
 catboost==1.2.3
 
 # -----------------------
 # DEEP LEARNING (CPU ONLY)
 # -----------------------
-tensorflow==2.16.1
+tensorflow==2.16.1       # works on macOS ARM with CPU acceleration
 keras==3.1.1
 
 # -----------------------
@@ -73,9 +73,9 @@ opencv-python==4.9.0.80
 Pillow==10.3.0
 
 # -----------------------
-# TIME SERIES (optional)
+# TIME SERIES
 # -----------------------
-pmdarima==2.0.4
+pmdarima==2.0.4          # compatible with Python 3.11 + macOS ARM
 
 # -----------------------
 # MODEL EXPLAINABILITY

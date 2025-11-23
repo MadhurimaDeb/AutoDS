@@ -1,180 +1,181 @@
-# AutoData
+# AutoDS
 
 **By Madhurima Deb**
 
-AutoData is my personal brainchild — a project born from the idea of creating a fully modular, scalable, and intelligent **no‑code + low‑code Data Science platform**, built almost entirely in Python. I am designing and developing AutoData as a long‑term, evolving system that grows with my knowledge, experiences, and the needs of users who want to perform data science without writing code, while still having the power to customize everything manually.
+AutoDS is my personal brainchild — a project born from the idea of creating a fully modular, scalable, and intelligent **no-code + low-code Data Science platform**, built almost entirely in Python. I am designing and developing AutoDS as a long-term, evolving system that grows with my knowledge, experiences, and the needs of users who want to perform data science without writing code, while still having the power to customize everything manually.
 
-This repository documents my vision and ongoing development of AutoData: a tool that blends automation, control, explainability, and guided learning — all within a clean Streamlit interface.
+This repository documents the vision and active development of AutoDS — a tool that blends automation, control, explainability, and guided learning, packaged within a modern Streamlit interface.
 
 ---
 
 ## 🚀 Project Vision
 
-AutoData is being developed around one clear philosophy:
+AutoDS is built on one core philosophy:
 
-> **Every stage of the data science pipeline must have two modes — Manual Mode for full control, and Automatic Mode for intelligent one‑click execution.**
+> **Every stage of the data science pipeline must provide two modes: Manual Mode (full control) and Automatic Mode (intelligent one-click execution).**
 
-This structure ensures that AutoData remains:
+This ensures that AutoDS remains:
 
-* Beginner‑friendly
-* Analyst‑friendly
-* Developer‑friendly
-* Scalable for future advanced ML/DL integrations
+- Beginner-friendly  
+- Analyst-friendly  
+- Developer-friendly  
+- Scalable for future advanced ML/DL integrations  
 
 The goal is to create a unified platform where anyone — regardless of skill level — can seamlessly:
 
-* Import data
-* Prepare and clean datasets
-* Perform full EDA
-* Generate visualizations
-* Engineer features
-* Build ML/DL models
-* Evaluate and export outputs
-* Understand everything through an AI assistant
+- Import datasets  
+- Clean and preprocess data  
+- Perform exploratory data analysis  
+- Generate customizable visualizations  
+- Engineer features  
+- Build ML/DL models  
+- Evaluate and explain results  
+- Export pipelines and models  
+- Learn concepts through an integrated AI assistant  
 
-And do all of this using either **guided automation** or **full manual control**.
+All of this available through both **guided automation** and **full manual control**.
 
 ---
 
 ## 🧩 Current & Planned Features
 
-AutoData is being built as a continuously expanding system. Below are the key components — some already implemented, others planned on the roadmap.
+Below is a detailed overview of AutoDS’s modular design — a continuously expanding system.
 
-### ⭐ 1. Dataset Import & Version Management
+### ⭐ 1. Dataset Import & Versioning
+- CSV, Excel, Parquet, JSON support  
+- Auto schema/dtype detection  
+- Versioned dataset storage (raw → cleaned → engineered)  
+- Ability to load any version into any module  
 
-* Upload multiple formats (CSV, Excel, JSON, Parquet)
-* Auto‑detect schema, dtypes, missing patterns
-* Versioned dataset storage (raw → cleaned → engineered)
-* Reload any version in any module
-* Foundation for dataset lineage
-
-### ⭐ 2. Data Preparation Module
-
-#### Manual Mode (Current + Planned)
-
-* Drop/rename columns
-* Filtering & conditional logic
-* Scaling, normalization, transformation
-* Missing value strategies
-* Outlier detection and fixing
-
-#### Automatic Mode (Planned)
-
-* Smart cleaning pipeline
-* AI‑driven suggestions
-* One‑click preprocessing
-
-### ⭐ 3. Feature Engineering Module
+### ⭐ 2. Data Preparation
 
 #### Manual Mode
-
-* Encoding (One‑Hot, Label, Target, etc.)
-* Polynomial features
-* Date/time extraction
-* Text preprocessing
-* Custom formula‑based feature creation
+- Drop/rename columns  
+- Conditional filtering  
+- Scaling & normalization  
+- Missing value handling  
+- Outlier detection  
 
 #### Automatic Mode
+- Smart preprocessing pipeline  
+- AI-generated cleaning suggestions  
+- One-click transformations  
 
-* Auto‑feature generation
-* Feature selection based on correlation & importance
-* Multicollinearity diagnostics
-
-### ⭐ 4. EDA & Visualization Module
+### ⭐ 3. Feature Engineering
 
 #### Manual Mode
-
-* Customizable plot builder
-* Statistical summaries
-* Column‑wise exploration tools
+- Encoding (One-Hot, Label, Target, etc.)  
+- Polynomial features  
+- Date/time feature extraction  
+- Text preprocessing  
+- Custom formula-based features  
 
 #### Automatic Mode
+- Auto-feature generation  
+- Multicollinearity detection  
+- AI-assisted feature selection  
 
-* Auto‑EDA report (Sweetviz)
-* AI‑generated insight report
-* Recommendation engine for next steps
-
-### ⭐ 5. Machine Learning Module
+### ⭐ 4. EDA & Visualization
 
 #### Manual Mode
-
-* Classification / Regression selection
-* Algorithm selector
-* Hyperparameter tuning
-* Manual feature selection
-* Multiple evaluation metrics
+- Custom plot builder  
+- Statistical summaries  
+- Column-wise exploration  
 
 #### Automatic Mode
+- Sweetviz report  
+- AI-generated insights  
+- Next-step recommendations  
 
-* AutoML engine
-* Multi‑model comparison
-* Automated hyperparameter optimization
-* Natural‑language model explanation
+### ⭐ 5. Machine Learning
 
-### ⭐ 6. Model Evaluation & Explainability
+#### Manual Mode
+- Classification & Regression  
+- Algorithm selector  
+- Hyperparameter tuning  
+- Feature selection  
+- Evaluation metrics  
 
-* SHAP, LIME (manual)
-* Automated evaluation report (planned)
-* AI explanation of performance strengths and weaknesses
+#### Automatic Mode
+- AutoML engine  
+- Multi-model comparison  
+- Automated hyperparameter tuning  
+- Natural-language explanations  
+
+### ⭐ 6. Evaluation & Explainability
+- SHAP & LIME support  
+- Model comparison tables  
+- Automated evaluation report (planned)  
+- AI-based performance reasoning  
 
 ### ⭐ 7. Model Export
-
-* Export trained model + preprocessing pipeline
-* ONNX export planned
-* Metadata packaging
+- Export pickle model + preprocessing pipeline  
+- ONNX export (planned)  
+- Metadata packaging  
 
 ### ⭐ 8. Integrated AI Assistant
 
 Powered by Gemini Pro Vision:
-
-* Explains each operation
-* Suggests next steps
-* Performs guided EDA
-* Helps beginners learn DS concepts
-* Identifies pipeline issues early
+- Explain operations  
+- Provide next-step recommendations  
+- Guide EDA & data preparation  
+- Help beginners understand DS concepts  
+- Interpret model results  
 
 ---
 
-## 🌱 Future Scope & Scalability
+## 🌱 Future Scope
 
-AutoData is intentionally designed for **long‑term expansion**. Planned future enhancements include:
+Long-term planned expansions:
 
-* Deep learning model builder UI
-* Time‑series automation
-* NLP transformations and embeddings
-* Cloud dataset hosting & syncing
-* User authentication & personalized workspace
-* Exporting full pipelines as Python scripts
-* Workflow orchestration and scheduling
-
-Suggestions, ideas, and collaborative improvements are always welcome — AutoData will grow stronger with community input.
+- Deep learning model builder  
+- Time-series workflows  
+- NLP embeddings & transformations  
+- Cloud dataset sync & storage  
+- Multi-user workspaces  
+- Script/pipeline export to Python  
+- Automated workflow orchestration  
 
 ---
 
 ## 🧑‍💻 Tech Stack
 
-AutoData prioritizes Python‑first development using:
-
-* Streamlit (UI)
-* Pandas, NumPy, PyArrow (data engine)
-* Scikit‑learn, XGBoost, CatBoost (ML)
-* Matplotlib, Seaborn, Plotly (visuals)
-* Sweetviz (auto‑EDA)
-* Google Generative AI (chatbot & insights)
-* Parquet‑based dataset versioning
+- Streamlit  
+- Pandas, NumPy, PyArrow  
+- Scikit-learn, XGBoost, LightGBM, CatBoost  
+- Matplotlib, Seaborn, Plotly  
+- Sweetviz (Auto-EDA)  
+- Google Generative AI (AI assistant)  
+- Parquet versioning system  
 
 ---
 
-## 🛠️ Installation
+## 🔧 Installation
 
-```
+### 1. Clone the Repository
+```bash
 git clone <repo-url>
-cd AutoData
-python -m venv .venv
-source .venv/bin/activate
+cd AutoDS
+
+# Create virtual environment (Python 3.11 recommended)
+python3.11 -m venv .venv
+
+# Activate environment
+source .venv/bin/activate # for mac
+.venv\Scripts\activate # for windows
+
+# Install Required System Packages (macOS only)
+brew install libomp
+brew link libomp --force
+
+
+# Upgrade pip and install dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
-streamlit run src/app.py
-```
+
+# Run AutoDS
+streamlit run app.py
+
 
 ---
 
@@ -182,7 +183,51 @@ streamlit run src/app.py
 
 Although this is my personal project, I am completely open to suggestions, ideas, feature requests, and even future open‑source collaboration.
 
-If you have thoughts, feel free to open an issue or reach out.
+If you have thoughts, feel free to open an issue or reach out- especially in:
+
+- UI/UX improvements
+
+- AutoML enhancements
+
+- EDA automation
+
+- New ML/DL modules
+
+- Bug fixes & performance optimization
+
+---
+
+## 🔐 Branch Policy
+
+main is protected
+
+All changes must come from feature branches
+
+Pull requests must pass CI and receive approval before merging
+
+---
+
+## 📬 How to Contribute
+
+1. Fork this repository
+
+1. Create a new branch:
+
+git checkout -b feature/<feature-name>
+
+
+3. Commit your changes:
+
+git add .
+git commit -m "Describe your update"
+
+
+4. Push the branch:
+
+git push -u origin feature/<feature-name>
+
+
+5. Open a Pull Request
 
 ---
 
