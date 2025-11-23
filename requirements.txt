@@ -1,0 +1,103 @@
+# -----------------------
+# CORE PYTHON UTILITIES
+# -----------------------
+pandas==2.2.2
+numpy==1.26.4
+scipy==1.12.0
+scikit-learn==1.4.2
+statsmodels==0.14.2
+pyyaml==6.0.1
+python-dotenv==1.0.1
+
+# -----------------------
+# DATA PROCESSING
+# -----------------------
+openpyxl==3.1.2
+xlrd==2.0.1
+pyarrow==15.0.2
+fastparquet==2024.2.0
+
+# -----------------------
+# VISUALIZATION
+# -----------------------
+matplotlib==3.8.4
+seaborn==0.13.2
+plotly==5.22.0
+altair==5.3.0
+
+# -----------------------
+# STREAMLIT + UI COMPONENTS
+# -----------------------
+streamlit==1.32.0
+streamlit-option-menu==0.3.6
+streamlit-aggrid==0.3.4.post3
+streamlit-chat==0.1.1
+
+# -----------------------
+# EDA AUTOMATION
+# -----------------------
+sweetviz==2.3.1   # keep only this (lightweight, stable)
+
+# -----------------------
+# FEATURE ENGINEERING
+# -----------------------
+category-encoders==2.6.3
+imbalanced-learn==0.12.0
+feature-engine==1.6.2
+
+# -----------------------
+# MACHINE LEARNING
+# -----------------------
+xgboost==2.0.3
+lightgbm==4.3.0
+catboost==1.2.3
+
+# -----------------------
+# DEEP LEARNING (CPU ONLY)
+# -----------------------
+tensorflow==2.16.1
+keras==3.1.1
+
+# -----------------------
+# NLP (Gemini handles this mostly)
+# -----------------------
+nltk==3.8.1
+
+# -----------------------
+# PDF / TEXT / IMAGE HANDLING
+# -----------------------
+pymupdf==1.24.1
+pdfplumber==0.10.3
+python-docx==1.1.0
+opencv-python==4.9.0.80
+Pillow==10.3.0
+
+# -----------------------
+# TIME SERIES (optional)
+# -----------------------
+pmdarima==2.0.4
+
+# -----------------------
+# MODEL EXPLAINABILITY
+# -----------------------
+shap==0.45.1
+lime==0.2.0.1
+
+# -----------------------
+# MODEL SAVING / EXPORT
+# -----------------------
+joblib==1.4.0
+onnxruntime==1.17.1
+
+# -----------------------
+# BACKEND UTILITIES
+# -----------------------
+requests==2.31.0
+aiohttp==3.9.3
+fastapi==0.110.1
+uvicorn==0.29.0
+
+# -----------------------
+# GEMINI API SUPPORT
+# -----------------------
+google-generativeai==0.5.2
