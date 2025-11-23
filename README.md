@@ -156,26 +156,30 @@ Long-term planned expansions:
 ```bash
 git clone <repo-url>
 cd AutoDS
+```
 
 # Create virtual environment (Python 3.11 recommended)
+```
 python3.11 -m venv .venv
-
+```
 # Activate environment
+```
 source .venv/bin/activate # for mac
 .venv\Scripts\activate # for windows
+```
 
 # Install Required System Packages (macOS only)
-brew install libomp
+```brew install libomp
 brew link libomp --force
-
+```
 
 # Upgrade pip and install dependencies
-pip install --upgrade pip
+```pip install --upgrade pip
 pip install -r requirements.txt
-
+```
 # Run AutoDS
-streamlit run app.py
-
+```streamlit run app.py
+```
 
 ---
 
