@@ -56,7 +56,15 @@ def render_dataset_manager():
     # Excel Download
     buffer = io.BytesIO()
     with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
-        df.to_excel(writer, index=False, sheet_name='Sheet1')
+        # Create a copy to modify for export without affecting the original
+        df_export = df.copy()
+        for col in df_export.columns:
+            if pd.api.types.is_datetime64_any_dtype(df_export[col]):
+                # Remove timezone info for Excel compatibility
+                if df_export[col].dt.tz is not None:
+                     df_export[col] = df_export[col].dt.tz_localize(None)
+                     
+        df_export.to_excel(writer, index=False, sheet_name='Sheet1')
     
     col2.download_button(
         label="📥 Excel",

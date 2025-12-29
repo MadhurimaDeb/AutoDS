@@ -345,26 +345,105 @@ def render_manual_cleaning():
     # ---------------------------------------------------------
     # 6. DATE/TIME EXTRACTION (Conditionally Rendered)
     # ---------------------------------------------------------
-    if date_cols:
-        with st.expander("📅 Date/Time Operations"):
-            # Attempt to find datetime capable cols
-            dt_col = st.selectbox("Date Column", date_cols, key="dt_col")
-            to_ext = st.multiselect("Extract to new columns", ["Year", "Month", "Day", "Weekday"])
+    # ---------------------------------------------------------
+    # 6. ADVANCED DATE/TIME OPERATIONS
+    # ---------------------------------------------------------
+    # Always show if df has columns, as users might want to parse strings to dates
+    if not df.empty:
+        from .datetime_manager import DATETIME_OPS_CATALOG, apply_datetime_operation
+        
+        with st.expander("📅 Advanced Date/Time Operations (Parse, Clean, Extract)", expanded=False):
             
-            if st.button("Extract Components"):
-                try:
-                    df_new = df.copy()
-                    # Force conversion temp
-                    series = pd.to_datetime(df_new[dt_col], errors='coerce')
-                    
-                    if "Year" in to_ext: df_new[f"{dt_col}_Year"] = series.dt.year
-                    if "Month" in to_ext: df_new[f"{dt_col}_Month"] = series.dt.month
-                    if "Day" in to_ext: df_new[f"{dt_col}_Day"] = series.dt.day
-                    if "Weekday" in to_ext: df_new[f"{dt_col}_Weekday"] = series.dt.day_name()
-                    
-                    DataManager.save_dataset(df_new, dataset_name, version_note="date_extract", action_description=f"Extracted date components from '{dt_col}'")
-                    st.session_state["cloud_datasets"][st.session_state["active_dataset"]] = df_new
-                    st.success("Extracted Date Components!")
-                    st.rerun()
-                except Exception as e:
-                    st.error(f"Extraction Error: {e}")
+            # 1. Select Column
+            # Prioritize date columns but allow others for parsing
+            all_cols = df.columns.tolist()
+            default_ix = 0
+            if date_cols:
+                # Default to first date col
+                try: default_ix = all_cols.index(date_cols[0])
+                except: pass
+            
+            col_dt = st.selectbox("Select Target Column", all_cols, index=default_ix, key="adt_col")
+            
+            # 2. Select Category & Method
+            c_cat, c_meth = st.columns(2)
+            cat = c_cat.selectbox("Operation Category", list(DATETIME_OPS_CATALOG.keys()), key="adt_cat")
+            meth_options = DATETIME_OPS_CATALOG[cat]
+            method = c_meth.selectbox("Method", meth_options, key="adt_meth")
+            
+            # 3. Dynamic Params
+            params = {}
+            st.write("---")
+            
+            # UI Logic for Params
+            if cat == "1. Inspection":
+                 if method == "View Sample Values":
+                     st.write(df[col_dt].head(10))
+                     st.write(df[col_dt].describe())
+                 elif method == "Check Timezone Info":
+                     try:
+                         if pd.api.types.is_datetime64_any_dtype(df[col_dt]):
+                              st.write(f"Timezone: {df[col_dt].dt.tz}")
+                         else:
+                              st.warning("Not a datetime column.")
+                     except Exception as e:
+                         st.write(f"Error checking timezone: {e}")
+
+            elif cat == "2. Parsing & Conversion":
+                if "Format" in method:
+                     params["format"] = st.text_input("Format String (e.g., %Y-%m-%d)", "%Y-%m-%d")
+                elif "Unix" in method:
+                     params["unit"] = st.selectbox("Unit", ["s", "ms", "ns", "D"], index=0)
+
+            elif cat == "3. Missing & Invalid":
+                 if "Constant" in method:
+                      params["value"] = st.text_input("Fill Value (Date String)", "2020-01-01")
+                 elif "Invalid" in method:
+                      # Implicit logic in manager, usually drops or fills
+                      pass
+
+            elif cat == "4. Timezone Handling":
+                 if "Localize" in method or "Convert" in method:
+                      params["tz"] = st.selectbox("Timezone", ["UTC", "US/Pacific", "US/Eastern", "Europe/London", "Asia/Tokyo", "Asia/Kolkata"])
+            
+            elif cat == "5. Date & Time Validation":
+                 if "Past Limit" in method:
+                      params["limit_date"] = st.date_input("Limit Date").strftime("%Y-%m-%d")
+
+            elif cat == "8. Comparison & Filtering":
+                 if "Before" in method or "After" in method:
+                      params["date_val"] = st.date_input("Date Threshold").strftime("%Y-%m-%d")
+                 elif "Between" in method:
+                      c1, c2 = st.columns(2)
+                      params["start_date"] = c1.date_input("Start Date").strftime("%Y-%m-%d")
+                      params["end_date"] = c2.date_input("End Date").strftime("%Y-%m-%d")
+                 elif "Year" in method:
+                      params["year"] = st.number_input("Year", 1900, 2100, 2023)
+                 elif "Month" in method:
+                      params["month"] = st.slider("Month", 1, 12, 1)
+
+            elif cat == "11. Duration & Diff":
+                 if "Difference (vs Column)" in method:
+                      params["other_col"] = st.selectbox("Compare with Column", [c for c in df.columns if c != col_dt])
+
+            # Apply Button
+            if "View" not in method and "Check" not in method:
+                if st.button("📅 Apply Operation"):
+                    try:
+                        df_new = apply_datetime_operation(df, col_dt, cat, method, **params)
+                        
+                        # Diff check
+                        diff_rows = len(df) - len(df_new)
+                        diff_cols = len(df_new.columns) - len(df.columns) # New cols extracted
+                        
+                        DataManager.save_dataset(df_new, dataset_name, version_note=f"dt_{cat[:3]}", 
+                                                action_description=f"Applied {method} on {col_dt}")
+                        st.session_state["cloud_datasets"][st.session_state["active_dataset"]] = df_new
+                        
+                        st.success(f"Applied {method}!")
+                        if diff_rows > 0: st.info(f"Dropped {diff_rows} rows.")
+                        if diff_cols > 0: st.info(f"Created {diff_cols} new columns.")
+                        
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"Operation Failed: {e}")
